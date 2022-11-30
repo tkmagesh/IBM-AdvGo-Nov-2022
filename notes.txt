@@ -26,3 +26,7 @@ CGO_ENABLED?
 
 Concurrency:
     Ability to to have more than one execution path in the application
+
+Assignment-1
+    Write a goroutine that will generate the prime numbers between the given start and end
+    Receive the prime numbers in the main function and print them as and when they are generated
