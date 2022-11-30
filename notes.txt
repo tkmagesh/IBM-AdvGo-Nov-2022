@@ -11,3 +11,18 @@ Methodology:
     - No powerpoints
     - 100% hands on driven
 
+Repo:
+    https://github.com/tkmagesh/IBM-AdvGo-Nov-2022
+
+About You:
+    Name
+    Primary Skillset
+    Experience in Go
+    Areas of interest in Go
+    Have you attended My Go basics class?
+
+
+CGO_ENABLED?
+
+Concurrency:
+    Ability to to have more than one execution path in the application
