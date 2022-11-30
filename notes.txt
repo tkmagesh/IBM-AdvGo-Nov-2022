@@ -30,3 +30,11 @@ Concurrency:
 Assignment-1
     Write a goroutine that will generate the prime numbers between the given start and end
     Receive the prime numbers in the main function and print them as and when they are generated
+
+
+Worker
+    configure the number of tasks that can be executed concurrently
+    execute the given task(s)
+    request to shutdown the worker
+        no new tasks should be allowed to be assigned
+        wait for all the assigned tasks to complete

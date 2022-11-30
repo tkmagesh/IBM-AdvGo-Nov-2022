@@ -18,6 +18,8 @@ func main() {
 	go source("data2.dat", dataCh, fileWg)
 
 	processWg := &sync.WaitGroup{}
+
+	processWg.Add(1)
 	evenCh, oddCh := splitter(dataCh, processWg)
 
 	processWg.Add(1)
@@ -57,7 +59,6 @@ func source(fileName string, ch chan int, wg *sync.WaitGroup) {
 func splitter(dataCh chan int, processWg *sync.WaitGroup) (<-chan int, <-chan int) {
 	evenCh := make(chan int)
 	oddCh := make(chan int)
-	processWg.Add(1)
 	go func() {
 		defer close(evenCh)
 		defer close(oddCh)
