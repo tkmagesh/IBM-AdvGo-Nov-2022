@@ -5,6 +5,7 @@ import (
 	"io"
 	"log"
 	"math/rand"
+	"pool-demo/pool"
 	"sync"
 	"time"
 )
@@ -75,7 +76,7 @@ func main() {
 		log.Fatalln(err)
 	}
 	wg := &sync.WaitGroup{}
-	clientCount := 20
+	clientCount := 10
 	wg.Add(clientCount)
 	for c := 1; c <= clientCount; c++ {
 		go func(client int) {
@@ -86,6 +87,7 @@ func main() {
 	wg.Wait()
 	fmt.Println("Batch - 1 completed.  Press ENTER to continue...")
 
+	fmt.Scanln()
 	wg.Add(10)
 	for c := 21; c <= 30; c++ {
 		go func(client int) {
@@ -97,7 +99,7 @@ func main() {
 	p.Close()
 }
 
-func doWork(client int, p pool.Pool) {
+func doWork(client int, p *pool.Pool) {
 	connResource, err := p.Acquire()
 	if err != nil {
 		log.Fatalln(err)
