@@ -69,3 +69,13 @@ gRPC
 
     Installation verification
         protoc --version
+
+    Steps:
+        1. Create the schema (protobuf)
+            a. Service Contract
+            b. Operation Contract(s)
+            c. Data Contract(s)
+    app structure
+        /client
+        /server
+        /proto
