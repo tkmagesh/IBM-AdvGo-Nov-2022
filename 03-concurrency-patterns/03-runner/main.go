@@ -21,9 +21,9 @@ func main() {
 
 	timeout := 15 * time.Second
 	r := runner.New(timeout)
-	r.Add(createTask(5))
-	r.Add(createTask(7))
-	r.Add(createTask(5))
+	r.Add(createTask(17))
+	/* r.Add(createTask(7))
+	r.Add(createTask(5)) */
 
 	if err := r.Start(); err != nil {
 		switch err {
