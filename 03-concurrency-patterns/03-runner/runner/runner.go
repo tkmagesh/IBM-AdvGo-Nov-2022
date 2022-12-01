@@ -35,6 +35,7 @@ func (r *Runner) Start() error {
 	case err := <-r.complete:
 		return err
 	case <-r.interrupt:
+		fmt.Println("Interrupt received.. exiting")
 		return ErrInterrupt
 	case <-r.timeout:
 		return ErrTimeout
