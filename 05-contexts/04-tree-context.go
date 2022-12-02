@@ -10,8 +10,8 @@ import (
 func main() {
 	wg := &sync.WaitGroup{}
 	rootCtx := context.Background()
-
-	timeoutCtx, cancel := context.WithTimeout(rootCtx, 10*time.Second)
+	valCtx := context.WithValue(rootCtx, "k1", "v1")
+	timeoutCtx, cancel := context.WithTimeout(valCtx, 10*time.Second)
 	defer cancel()
 
 	go func() {
@@ -31,7 +31,8 @@ func printNos(wg *sync.WaitGroup, stopCtx context.Context) {
 	childWg := &sync.WaitGroup{}
 
 	childWg.Add(1)
-	evenStopCtx, evenCancel := context.WithTimeout(stopCtx, 3*time.Second)
+	evenValCtx := context.WithValue(stopCtx, "k1", nil)
+	evenStopCtx, evenCancel := context.WithTimeout(evenValCtx, 3*time.Second)
 	defer evenCancel()
 	go printEvenNos(childWg, evenStopCtx)
 
@@ -57,6 +58,7 @@ LOOP:
 
 func printEvenNos(wg *sync.WaitGroup, stopCtx context.Context) {
 	defer wg.Done()
+	fmt.Printf("[printEvenNos] value of k1 = %v\n", stopCtx.Value("k1"))
 	no := 0
 LOOP:
 	for {
@@ -75,6 +77,7 @@ LOOP:
 
 func printOddNos(wg *sync.WaitGroup, stopCtx context.Context) {
 	defer wg.Done()
+	fmt.Printf("[printOddNos] value of k1 = %v\n", stopCtx.Value("k1"))
 	no := 1
 LOOP:
 	for {
