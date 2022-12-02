@@ -93,3 +93,6 @@ REST
     net/http 
     routing libraries
     web frameworks
+
+Test
+    go test ./... -v
