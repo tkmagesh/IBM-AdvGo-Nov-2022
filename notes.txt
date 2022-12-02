@@ -96,3 +96,14 @@ REST
 
 Test
     go test ./... -v
+
+    to install the mockery
+        go install github.com/vektra/mockery/v2@latest
+
+    to generate the mocks
+        mockery --all --keeptree
+
+Benchmarking
+    go test -bench=.
+    go test -bench=. -benchtime=5s
+    go test -bench=. -cpu=4
